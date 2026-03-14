@@ -2,12 +2,13 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-a = list(map(int, input().split()))
+arr = list(map(int, input().split()))
 
 dp = [1] * n
 
 for i in range(n):
-    for j in range(n):
-        if a[i] > a[j]:
-            dp[i] = max(dp[i], dp[j] + 1)
-print(dp)
+	for j in range(i):
+		if arr[j] < arr[i]:
+			dp[i] = max(dp[i], dp[j] + 1)
+
+print(max(dp))
